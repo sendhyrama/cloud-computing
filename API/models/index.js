@@ -47,25 +47,6 @@ db.destinations.belongsTo(db.destination_categories, { foreignKey: 'destination_
 db.cities.hasMany(db.destinations, { foreignKey: 'city_id' })
 db.destinations.belongsTo(db.cities, { foreignKey: 'city_id' })
 
-// db.provinces.hasMany(db.cities, { foreignKey: 'province_id' })
-// db.cities.belongsTo(db.provinces, { foreignKey: 'province_id' })
-// db.facilities.belongsToMany(db.attractions, {
-//     through: "relation_facility_attraction",
-//     as: "attractions",
-//     foreignKey: "id_facility"})
-// db.tour_packages.belongsToMany(db.tour_package_categories, {
-//     through: "relation_tour_package_cat",
-//     as: "tour_package_categories",
-//     foreignKey: "id_tour_package"
-// })
-// db.tour_package_categories.belongsToMany(db.tour_packages, {
-//     through: "relation_tour_package_cat",
-//     as: "tour_packages",
-//     foreignKey: "id_package_cat"})
-
-// db.tour_packages.belongsToMany(db.tour_package_categories, { through: db.relation_tour_package_cats });
-// db.tour_package_categories.belongsToMany(db.tour_packages, { through: db.relation_tour_package_cats  });
-
 // associate destination wishlist
 db.destinations.hasMany(db.destination_wishlists, { foreignKey: 'destination_id' })
 db.destination_wishlists.belongsTo(db.destinations, { foreignKey: 'destination_id' })
