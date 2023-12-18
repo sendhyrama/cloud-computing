@@ -40,11 +40,6 @@ db.destination_categories = require('./destination_category') (sequelize, DataTy
 db.destination_reviews = require('./destination_review') (sequelize, DataTypes)
 db.destination_wishlists = require('./destination_wishlist') (sequelize, DataTypes)
 
-// associate user
-db.users.hasMany(db.destination_reviews, {foreignKey:'user_id'})
-db.destination_reviews.belongsTo(db.users, {foreignKey: 'user_id'})
-db.destinations.hasMany(db.destination_reviews, {foreignKey: 'destination_id'})
-db.destination_reviews.belongsTo(db.destinations, {foreignKey: 'destination_id'})
 
 // associate destination
 db.destination_categories.hasMany(db.destinations, { foreignKey: 'destination_category_id' })
@@ -75,7 +70,13 @@ db.destinations.belongsTo(db.cities, { foreignKey: 'city_id' })
 db.destinations.hasMany(db.destination_wishlists, { foreignKey: 'destination_id' })
 db.destination_wishlists.belongsTo(db.destinations, { foreignKey: 'destination_id' })
 db.users.hasMany(db.destination_wishlists, { foreignKey: 'user_id' })
-db.destination_wishlists.belongsTo(db.users, { foreignKey: 'user_id' })
+db.destination_wishlists.belongsTo(db.users, { foreignKey: 'user_id'})
+
+// associate destination review
+db.users.hasMany(db.destination_reviews, {foreignKey:'user_id'})
+db.destination_reviews.belongsTo(db.users, {foreignKey: 'user_id'})
+db.destinations.hasMany(db.destination_reviews, {foreignKey: 'destination_id'})
+db.destination_reviews.belongsTo(db.destinations, {foreignKey: 'destination_id'})
 
 // sync alter
 db.users.sync({alter:true})

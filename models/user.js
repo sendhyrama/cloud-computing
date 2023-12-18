@@ -2,10 +2,11 @@ module.exports = function(sequelize, DataTypes){ // ini kalau pakai sequelize de
     const user = sequelize.define('user', {
         'user_id': {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             comment: "null",
             primaryKey: true,
             autoIncrement: true,
+            initialAutoIncrement: 1,
             unique: true,
             defaultValue: 404,
             startValue: 404
